@@ -1,0 +1,98 @@
+data3$starttime <- gsub("/", "-", data2$starttime)
+
+#data3$starttime <- as.POSIXct(data$starttime , format = "%m-%d-%yT%H:%M")
+
+data3$starttime1 <- strptime(x = as.character(data3$starttime), format = "%m-%d-%Y %H:%M")
+
+
+
+data3$Hours <- format(as.POSIXct(strptime(data3$starttime1,"%Y-%m-%d %H:%M",tz="")) ,format = "%H:%M")
+
+data3$date <- format(as.POSIXct(strptime(data3$starttime1,"%Y-%m-%d %H:%M",tz="")) ,format = "%Y-%m-%d")
+
+data3$date <- as.Date(data3$date)
+
+data3$time <- sapply(strsplit(data3$Hours,":"), `[`, 1)
+
+
+#Rscript
+Hours <- format(as.POSIXct(strptime(weather$Time,"%d/%m/%Y %H:%M",tz="")) ,format = "%H:%M")
+
+
+
+
+daysdate = data.frame(date=c(date))
+
+daysdate$day <- weekdays(as.Date(date))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-----------------//------------------------------
+
+stationCount <- summary(as.factor(data$start.station.id))
+
+
+
+stationFrame <- data.frame(start.station.id=names(stationCount), nums=stationCount)
+
+x <- toJSON(unname(split(stationFrame, 1:nrow(stationFrame))))
+cat(x)
+write(x, "statesFrame.json")
+
+
+stationData$tripduration <- NULL
+stationData$sstartTime <- NULL
+stationData$endTime <- NULL
+
+orignaldata <- read.csv("2013-08 - Citi Bike trip data.csv", header=TRUE)
+
+install.packages("plyr")
+library("plyr")
+
+a = count(orignaldata, 'start.station.id')
+
+df_merged <- merge(a, stationData, by.x="start.station.id", by.y="start.station.id", all.y=FALSE)
+
+final <- subset(df_merged, !duplicated(df_merged[,1]))
+
+
+finaldata$latlong <- paste(finaldata$startstationlatitude, finaldata$startstationlongitude, sep=",")
+
+
+
+
+
+count <- table(h1Data[ , c("CASE_STATUS","YEAR", "State")])
+
+
+
+count <- as.data.frame(table(h1Data[ , c("CASE_STATUS","YEAR", "State")]))??
+
+
+//seperating the month and year from the datetime fields 
+df$Month_Yr <- format(as.Date(df$Date), "%Y-%m")
+
+//making new dataframe
+
+dfnew1 <- data[,c(data$starttime,data$start.station.Id,data$start.station.name,data$usertype)]
+dfnew1 <- data.frame(data$starttime,data$start.station.Id, data$start.station.name, data$usertype)
+
+
+
+
+counts <- ddply(bigData, .(bigData$start.station.id, bigData$Hours))
+
+
+to remove NA Rows from the dataframe
+newX <- weatherdata[!is.na(weatherdata[,11]),]

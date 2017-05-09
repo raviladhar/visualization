@@ -1,0 +1,27 @@
+greenDataApril <- read_csv("C:/RProgramming/DataVisualization/green_tripdata_2014-04.csv")
+
+greenDataApril$VendorID<-NULL
+greenDataApril$Lpep_dropoff_datetime <- NULL
+greenDataApril$Store_and_fwd_flag <-NULL
+greenDataApril$RateCodeID<-NULL
+greenDataApril$Dropoff_longitude <- NULL
+greenDataApril$Dropoff_latitude<-NULL
+greenDataApril$Extra<-NULL
+greenDataApril$MTA_tax<-NULL
+greenDataApril$Tolls_amount<-NULL
+greenDataApril$Ehail_fee<-NULL
+greenDataApril$Total_amount<-NULL
+greenDataApril$Payment_type<-NULL
+greenDataApril$Trip_type<-NULL
+
+#install.packages("lubridate")
+library(lubridate)
+greenDataApril$day <- wday(ymd(as.Date(greenDataApril$lpep_pickup_datetime)))
+greenDataApril$starttime1 <- strptime(x = as.character(greenDataApril$lpep_pickup_datetime), format = "%Y-%m-%d %H:%M:%S")
+
+greenDataApril$Hours <- format(as.POSIXct(strptime(greenDataApril$starttime1,"%Y-%m-%d %H:%M:%S",tz="")) ,format = "%H")
+
+write.csv(greenDataApril,"greenDataApril.csv")
+
+//removing the character like '\ , $ or any other symbol' from the data frame
+datafile1$birth.year = as.numeric(gsub("[\\N]", "", datafile1$birth.year))
